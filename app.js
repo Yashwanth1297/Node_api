@@ -4,8 +4,8 @@ const express = require("express");
 const http = require("http");
 const app = express();
 const config = require("./Config")()
-const PORT = 3000;
-const Mongo_URL = "mongodb+srv://Yashwanth:hdWSAavsJtwKyq9L@cluster0.4kaxsmv.mongodb.net/?retryWrites=true&w=majority";
+const PORT = config.port;
+const Mongo_URL = config.connection_string;
 const LoginRouter = require("./Routes/LoginRouter");
 const RegisterRouter = require("./Routes/RegisterRouter");
 
