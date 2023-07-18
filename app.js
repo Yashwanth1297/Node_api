@@ -23,6 +23,7 @@ app.get("/",(req,res)=>{
     res.send("Inside Home Page");
 })
 
+app.use(express.json());
 app.use("/Login",LoginRouter);
 app.use("/Register",RegisterRouter);
 
