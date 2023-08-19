@@ -10,5 +10,6 @@ config_data = {}
 //LOAD FROM ENV VARIABLES
 config_data.connection_string = process.env.connection_string 
 config_data.port = process.env.port || config_data.port
+config_data.accessTokenSecret = process.env.ACCESS_TOKEN_SECRET
 return config_data;
 }
