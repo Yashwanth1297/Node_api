@@ -20,9 +20,9 @@ const hashedPassword = await bcrypt.hash(password,salt);
 
     console.log(dbResult);
     
-    res.status(201).json({"msg":"User Created in the db"});
+    return res.status(201).json({"msg":"User Created in the db"});
 }catch(err){
-    res.status(500).send("Internal Server error");
+   return  res.status(500).send("Internal Server error");
 }
 } 
 
