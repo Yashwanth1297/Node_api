@@ -3,8 +3,9 @@ const { user } = require("../Models/userModel");
 const config = require("../Config")();
 const jwt = require("jsonwebtoken");
 const accessTokenSecret = config.accessTokenSecret;
-const refreshTokenSecret = config.refreshTokenSecret; // Your refresh token secret
+// eslint-disable-next-line node/no-extraneous-require
 const cookie = require("cookie");
+const refreshTokenSecret = config.refreshTokenSecret;
 
 const Login = async (req, res) => {
   const username = req.body.email;
@@ -36,6 +37,7 @@ const Login = async (req, res) => {
       res.setHeader('Access-Control-Allow-Credentials', 'true');
       res.setHeader(
         "Set-Cookie",
+        // eslint-disable-next-line no-undef
         cookie.serialize("refreshToken", refreshToken, cookieOptions)
       );
 

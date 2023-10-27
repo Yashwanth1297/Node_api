@@ -12,15 +12,11 @@ const authenticationMiddleware = (req,res,next) =>{
         if (err) {
             return res.status(403).json({ message: 'Invalid token' });
         }else{
-            // Attach the decoded token payload to the request for use in subsequent middleware or route handler
         req.user = decoded;
-        console.log("user",req.user);
             next();
         }
-    
-        
-    
     })
+
 
 }
 

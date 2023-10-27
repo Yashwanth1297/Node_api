@@ -1,7 +1,5 @@
-require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
-const http = require("http");
 const cookieParser = require("cookie-parser");
 const app = express();
 const cors = require("cors");
@@ -12,9 +10,6 @@ const LoginRouter = require("./Routes/LoginRouter");
 const RegisterRouter = require("./Routes/RegisterRouter");
 const UserRouter = require("./Routes/UserRouter");
 const RefreshRouter = require("./Routes/refreshRouter")
-
-
-const server = http.createServer(app);
 
 mongoose.connect(Mongo_URL)
         .then(()=>{
@@ -42,6 +37,7 @@ app.use("/refresh",RefreshRouter);
 
 
 
-server.listen(PORT,()=>{
-    console.log(`Server is up and Running on ${PORT}`);
-});
+app.listen(PORT || 4000);
+console.log("Listening on port " + PORT);
+
+module.exports = app

@@ -1,10 +1,11 @@
+const dotenv = require('dotenv');
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 let config_data = null
 module.exports = function() {
 // if the static data was already set. return it
 if(config_data != null && config_data != undefined) {
         return config_data
 }
-    
 config_data = {}
 
 //LOAD FROM ENV VARIABLES

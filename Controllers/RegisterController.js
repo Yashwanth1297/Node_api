@@ -1,8 +1,6 @@
 const bcrypt = require("bcrypt");
 const {user} = require("../Models/userModel")
 const Register = async (req,res) => {
-
-    console.log("request",req.body);
     const fname = req.body.fname;
     const lname = req.body.lname;
     const email = req.body.email;
@@ -17,11 +15,10 @@ const hashedPassword = await bcrypt.hash(password,salt);
         email,
         "password": hashedPassword
     })
-
-    console.log(dbResult);
     
     return res.status(201).json({"msg":"User Created in the db"});
 }catch(err){
+    console.log('error', err)
    return  res.status(500).send("Internal Server error");
 }
 } 
