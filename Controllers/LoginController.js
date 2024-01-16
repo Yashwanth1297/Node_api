@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const { user } = require("../Models/userModel");
-const config = require("../Config")();
+const config = require("../Config");
 const jwt = require("jsonwebtoken");
 const accessTokenSecret = config.accessTokenSecret;
 // eslint-disable-next-line node/no-extraneous-require
@@ -31,7 +31,7 @@ const Login = async (req, res) => {
       // Set both tokens in the HTTP-only cookie
       const cookieOptions = {
         httpOnly: true,
-        path:"/",
+        path: "/",
       };
 
       res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -41,7 +41,7 @@ const Login = async (req, res) => {
         cookie.serialize("refreshToken", refreshToken, cookieOptions)
       );
 
-      return res.status(200).json({message:"Login Succesful",accessToken});
+      return res.status(200).json({ message: "Login Succesful", accessToken });
     } else {
       return res.status(401).send("Incorrect Username or Password");
     }

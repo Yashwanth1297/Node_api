@@ -3,13 +3,17 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const app = express();
 const cors = require("cors");
-const config = require("./Config")()
-const PORT = config.port;
-const Mongo_URL = config.connection_string;
+const config = require("./Config");
+const PORT = config.Port;
+const Mongo_URL = config.db_connection;
 const LoginRouter = require("./Routes/LoginRouter");
 const RegisterRouter = require("./Routes/RegisterRouter");
 const UserRouter = require("./Routes/UserRouter");
 const RefreshRouter = require("./Routes/refreshRouter")
+
+console.log("mongo_string",Mongo_URL);
+console.log("port",PORT);
+console.log("config",config);
 
 mongoose.connect(Mongo_URL)
         .then(()=>{
